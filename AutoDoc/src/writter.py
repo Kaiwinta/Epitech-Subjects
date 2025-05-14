@@ -121,12 +121,16 @@ class project_writer(writer):
     def __write_one_test_cat(self, test_cat : scrapper.test_category) -> None:
         self._readme.write(f"""
         <tr>
-            <td rowspan="{test_cat.test_amount}">{test_cat.name}</td>
-            <td rowspan="{test_cat.test_amount}" style="text-align: center;">{test_cat.test_amount}</td>
-            <td>{test_cat.test_names[0]}</td>
+            <td rowspan="{test_cat.test_named_amount}">{test_cat.name}</td>
+            <td rowspan="{test_cat.test_named_amount}" style="text-align: center;">{test_cat.test_named_amount}</td>""")
+        if (test_cat.test_named_amount > 1):
+            self._readme.write(f"""
+            <td>{test_cat.test_names[0]}</td>\n\t\t</tr>""")
+        else:
+            self._readme.write(f"""
         </tr>
     """)
-        for i in range(1, test_cat.test_amount):
+        for i in range(1, test_cat.test_named_amount):
             if (i > 1):
                 self._readme.write('\n')
             self._readme.write(f"\t\t<tr>\n\t\t\t<td>{test_cat.test_names[i]}</td>\n\t\t</tr>")

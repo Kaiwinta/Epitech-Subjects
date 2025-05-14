@@ -153,7 +153,7 @@ class mrvn_scrapper(scrapper):
 class test_category:
     def __init__(self, name :str, amount :int, rest :list[str]) -> None:
         self.name = name
-        self.test_amount = amount
+        self.test_named_amount = amount
         self.rest = rest
         self.test_names = []
         if (self.rest != None):
