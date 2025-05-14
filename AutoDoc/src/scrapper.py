@@ -89,7 +89,8 @@ class scrapper:
     
     def _select_epi_account(self, base_url : str):
         # On attends d'être sur la page de login
-        self._check_url(BASE_MICROSOFT_LOGIN_URL)
+        if (self.driver.current_url.find(BASE_INTRA_URL) != -1 or self.driver.current_url.find(BASE_MRVN_URL) != -1):
+            return
         iteration = 0
         clicked = False
 
